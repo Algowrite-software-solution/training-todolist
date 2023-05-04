@@ -1,0 +1,2 @@
+// all images goes here
+// you can create new folders accordingly
