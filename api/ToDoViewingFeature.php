@@ -3,7 +3,7 @@
 require("../app/dbQuery.php"); // file navigation is important 
 
 $database = new DB();
-$searchQuery = "SELECT * FROM todolist_db.todo WHERE todo_status_id = ?";
+$searchQuery = "SELECT * FROM `todo` WHERE `todo_status_id` = ?";
 $stmt = $database->prepare($searchQuery, 'i', array(1));
 $Result = $stmt->get_result();
 
@@ -26,4 +26,3 @@ for ($i = 0; $i < $r; $i++) {
 
 $responseJsonText = json_encode($array); // for arrays and objects
 echo ($responseJsonText);
-

@@ -1,17 +1,19 @@
 function todoListLoader() {
   let ItemContainer = document.querySelector("#todoItemContainer");
 
-// request to the server
+  // request to the server
+  let request = new XMLHttpRequest();
+  request.onreadystatechange = () => {
+    if (request.readyState == 4) {
+      let response = request.responseText;
+      let todoListItems = JSON.parse(response);
 
-  let finalDesign = "";
-  for (let index = 0; index < 10; index++) {
-    let todoItemTitle = "title" + index;
+      let finalDesign = "";
+      for (let index = 0; index < todoListItems.length; index++) {
+        let todoItemTitle = todoListItems[index].title;
+        let todoItemDueDate = todoListItems[index].due_date;
 
-    const date = new Date();
-    let todoItemDueDate =
-      date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate();
-
-    let uiDesign = `
+        let uiDesign = `
     <div class="col-3 p-0 my-4 d-flex justify-content-center align-items-center">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -28,11 +30,19 @@ function todoListLoader() {
     </div>
     `;
 
-    finalDesign += uiDesign;
-  }
+        finalDesign += uiDesign;
+      }
 
-  ItemContainer.innerHTML = finalDesign;
+      ItemContainer.innerHTML = finalDesign;
+    }
+  };
+
+  request.open(
+    "GET",
+    "http://localhost/algowrite/training-todolist/api/ToDoViewingFeature.php",
+    true
+  );
+  request.send();
 }
-
 
 todoListLoader();
