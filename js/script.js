@@ -33,3 +33,6 @@ function todoListLoader() {
 
   ItemContainer.innerHTML = finalDesign;
 }
+
+
+todoListLoader();
