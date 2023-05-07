@@ -5,7 +5,7 @@
 // get the request data
 // only use one
 // most requests comes in JSON format
-$request = $_GET["requestParameter"]; // if req on GET method
+// $request = $_GET["requestParameter"]; // if req on GET method
 $request = $_POST["requestParameter"]; // if req on POST method
 $requestObject = json_decode($request);
 

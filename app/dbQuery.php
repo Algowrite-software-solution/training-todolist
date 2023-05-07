@@ -12,12 +12,8 @@ class DB
     {
         $host = 'localhost';
         $user = 'root';
-
-        // $password = '#Apeamma2001'; //  madusha
-        // $database = 'digitel-menu-2023-04-25'; //  madusha
-        $password = 'JanithNirmal12#$'; //  janith
-        $database = 'digital_menu_demo_1'; //  janith
-
+        $password = 'Nisal#2000'; //  Nisal
+        $database = 'todolist_db'; //  Nisal
 
 
         $this->host = $host;
