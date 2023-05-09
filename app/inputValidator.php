@@ -30,7 +30,7 @@ class Validator
         'lastname' => true,
         'email' => true,
         'slmobile' => true,
-        'priceDouble'=>true,
+        'priceDouble' => true,
     );
 
 
@@ -55,6 +55,8 @@ class Validator
                     $response->$key = $this->slMobileValidator($value);
                 } else if ($key == 'priceDouble') {
                     $response->$key = $this->doubleValidator($value);
+                } else if (strpos($key, 'datetime')) {
+                    $response->$key = $this->datetimeValidator($value);
                 }
             } else {
                 $response->$key = $this->customValidator($value);
@@ -73,6 +75,18 @@ class Validator
         if (!preg_match('/^[a-zA-Z0-9_-]+$/', $input)) {
             // input contains invalid characters
             return "input can only contain letters, numbers, underscores, and dashes.";
+        }
+    }
+
+    public function datetimeValidator($input)
+    {
+        // Remove whitespace from beginning and end of name
+        $input = trim($input);
+
+        // Check if input contains only letters, numbers, underscores, and dashes
+        if (!preg_match('/^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\s([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/', $input)) {
+            // input contains invalid characters
+            return "input is not in valid datetime format";
         }
     }
 
