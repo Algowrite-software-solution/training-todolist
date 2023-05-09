@@ -55,7 +55,7 @@ class Validator
                     $response->$key = $this->slMobileValidator($value);
                 } else if ($key == 'priceDouble') {
                     $response->$key = $this->doubleValidator($value);
-                } else if (strpos($key, 'datetime')) {
+                } else if (strpos($key, 'datetime') !== false) {
                     $response->$key = $this->datetimeValidator($value);
                 }
             } else {
