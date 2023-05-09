@@ -31,6 +31,7 @@ class Validator
         'email' => true,
         'slmobile' => true,
         'priceDouble' => true,
+        'dueDatetime' => true,
     );
 
 
@@ -55,7 +56,7 @@ class Validator
                     $response->$key = $this->slMobileValidator($value);
                 } else if ($key == 'priceDouble') {
                     $response->$key = $this->doubleValidator($value);
-                } else if (strpos($key, 'datetime') !== false) {
+                } else if (strpos($key, 'dueDatetime') !== false) {
                     $response->$key = $this->datetimeValidator($value);
                 }
             } else {
