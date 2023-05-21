@@ -1,13 +1,13 @@
 <?php
 
 
-$request = $_POST["todoAdd"]; 
+$request = $_POST["todoAdd"];
 $requestObject = json_decode($request);
 
 
-require("../app/dbQuery.php"); 
-require("../app/inputValidator.php"); 
-require("../app/errorResponseSender.php"); 
+require("../app/dbQuery.php");
+require("../app/inputValidator.php");
+require("../app/errorResponseSender.php");
 
 $responseObject = new stdClass(); // if response in object format
 
@@ -15,7 +15,7 @@ $validator = new Validator($requestObject);
 $errors = $validator->validator();
 
 foreach ($errors as $key => $value) {
-    if($value){
+    if ($value) {
         $requestObject->error = $value;
         ErrorSender::sendError($responseObject);
     }
@@ -38,8 +38,3 @@ $stmt1 = $database->prepare($query, "ss", array($todo, $datetime));
 
 $responseObject->status = "success";
 ErrorSender::sendError($responseObject);
-
-
-
-
-
