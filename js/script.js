@@ -18,8 +18,11 @@ function todoListLoader() {
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <div class="row m-0">
-                    <div class="col-12 p-0 pt-1">
+                    <div class="col-10 p-0 pt-1">
                         <h5 class="card-subtitle mb-2 text-body-secondary">${todoItemTitle}</h5>
+                    </div>
+                    <div class="col-2">
+                    <div class="cricle opacity-50"></div>
                     </div>
                 </div>
                 <div>
@@ -39,7 +42,7 @@ function todoListLoader() {
 
   request.open(
     "GET",
-    "http://localhost/algowrite/training-todolist/api/ToDoViewingFeature.php",
+    "http://localhost/training-todolist/api/ToDoViewingFeature.php",
     true
   );
   request.send();
