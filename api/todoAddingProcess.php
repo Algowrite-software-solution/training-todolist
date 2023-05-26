@@ -16,7 +16,7 @@ $errors = $validator->validator();
 
 foreach ($errors as $key => $value) {
     if ($value) {
-        $requestObject->error = $value;
+        $responseObject->error = $value;
         ErrorSender::sendError($responseObject);
     }
 }
@@ -33,8 +33,8 @@ $datetime = $date . " " . $time;
 
 
 $database = new DB();
-$query = "INSERT INTO `todo` (`todo`,`due_datetime`,`status_id`) VALUES (?,?,0)";
-$stmt1 = $database->prepare($query, "ss", array($todo, $datetime));
+$query = "INSERT INTO `todo` (`title`,`due_datetime`, `recorded_datetime`,`todo_status_id`) VALUES (?,?,?,1)";
+$stmt1 = $database->prepare($query, "sss", array($todo, $datetime, $formattedDateTime));
 
 $responseObject->status = "success";
 ErrorSender::sendError($responseObject);

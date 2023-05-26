@@ -30,8 +30,13 @@ class Validator
         'lastname' => true,
         'email' => true,
         'slmobile' => true,
-        'priceDouble' => true,
-        'dueDatetime' => true,
+        'amount' => true,
+        'importance_id' => true,
+        'date' => true,
+        'time' => true,
+        'type_id' => true,
+        'todo_status_id' => true,
+        'todo_id' => true,
     );
 
 
@@ -54,10 +59,14 @@ class Validator
                     $response->$key = $this->descriptionValidator($value);
                 } else if ($key == 'slmobile') {
                     $response->$key = $this->slMobileValidator($value);
-                } else if ($key == 'priceDouble') {
+                } else if ($key == 'amount') {
                     $response->$key = $this->doubleValidator($value);
-                } else if (strpos($key, 'dueDatetime') !== false) {
-                    $response->$key = $this->datetimeValidator($value);
+                } else if ($key == 'todo_id' || $key == 'type_id' || $key == 'todo_status_id') {
+                    $response->$key = $this->intValidator($value);
+                } else if ($key == 'date') {
+                    $response->$key = $this->dateValidator($value);
+                } else if ($key == 'time') {
+                    $response->$key = $this->timeValidation($value);
                 }
             } else {
                 $response->$key = $this->customValidator($value);
@@ -73,21 +82,43 @@ class Validator
         $input = trim($input);
 
         // Check if input contains only letters, numbers, underscores, and dashes
-        if (!preg_match('/^[a-zA-Z0-9_-]+$/', $input)) {
+        if (!preg_match('/^[\w\s.,!?-]*$/', $input)) {
             // input contains invalid characters
-            return "input can only contain letters, numbers, underscores, and dashes.";
+            return "wrong cutom input";
         }
     }
-
-    public function datetimeValidator($input)
+    public function timeValidation($input)
     {
         // Remove whitespace from beginning and end of name
         $input = trim($input);
 
         // Check if input contains only letters, numbers, underscores, and dashes
-        if (!preg_match('/^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\s([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/', $input)) {
+        if (!preg_match('/^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/', $input)) {
             // input contains invalid characters
-            return "input is not in valid datetime format";
+            return "Invalid time input";
+        }
+    }
+    public function dateValidator($input)
+    {
+        // Remove whitespace from beginning and end of name
+        $input = trim($input);
+
+        // Check if input contains only letters, numbers, underscores, and dashes
+        if (!preg_match('/^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/', $input)) {
+            // input contains invalid characters
+            return "Input should be in valid date format.";
+        }
+    }
+
+    public function intValidator($input)
+    {
+        // Remove whitespace from beginning and end of name
+        $input = trim($input);
+
+        // Check if input contains only letters, numbers, underscores, and dashes
+        if (!preg_match('/^-?\d+$/', $input)) {
+            // input contains invalid characters
+            return "input must be an integer";
         }
     }
 
