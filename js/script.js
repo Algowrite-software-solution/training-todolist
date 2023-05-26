@@ -39,7 +39,7 @@ function todoListLoader() {
 
   request.open(
     "GET",
-    "http://localhost/algowrite/training-todolist/api/ToDoViewingFeature.php",
+    "http://localhost/training-todolist/api/ToDoViewingFeature.php",
     true
   );
   request.send();
