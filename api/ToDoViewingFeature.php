@@ -3,9 +3,8 @@
 require("../app/dbQuery.php"); // file navigation is important 
 
 $database = new DB();
-$searchQuery = "SELECT * FROM `todo` WHERE `todo_status_id` = ?";
-$stmt = $database->prepare($searchQuery, 'i', array(1));
-$Result = $stmt->get_result();
+$searchQuery = "SELECT * FROM `todo` ";
+$Result = $database->query($searchQuery);
 
 $r = $Result->num_rows;
 $array = array();

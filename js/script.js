@@ -24,7 +24,7 @@ function todoListLoader() {
                         <h5 class="card-subtitle mb-2 text-body-secondary">${todoItemTitle}</h5>
                     </div>
                     <div class="col-2">
-                    <button class="cricle opacity-50" style="${status_id===1?'background-color:green;':'background-color:red'}" onclick="statusChangeId(${status_id},${todoListItems[index].id})"></button>
+                    <button class="cricle opacity-50" style="${status_id==1?'background-color:green;':'background-color:none'}" onclick="statusChangeId(${status_id},${todoListItems[index].id})"></button>
                     </div>
                 </div>
                 <div>
@@ -54,7 +54,7 @@ todoListLoader();
 
 function statusChangeId(status_id,todo_id){
 
-  alert(todo_id);
+
   
   if(status_id==1){
     status_id = 2
@@ -62,7 +62,7 @@ function statusChangeId(status_id,todo_id){
     status_id = 1
   }
   // var status_id = document.getElementById("status_id");
-  alert(status_id);
+
 
   var statusChange ={
     status_id:status_id,
@@ -77,6 +77,8 @@ function statusChangeId(status_id,todo_id){
     if(request.readyState==4){
       var response = request.responseText;
       console.log(JSON.parse(response));
+      // window.location.reload();
+      todoListLoader();
     }
   }
   request.open("POST","http://localhost/training-todolist/api/ToDoStatusChangeFeature.php",true);
