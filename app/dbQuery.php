@@ -13,8 +13,8 @@ class DB
         $host = 'localhost';
         $user = 'root';
 
-        //$password = 'JanithNirmal12#$'; //  Janith
-        $password = 'Assiment@1234ABC'; //kavindu
+        $password = 'JanithNirmal12#$'; //  Janith
+        // $password = 'Assiment@1234ABC'; //kavindu
        $database = 'todolist-training1'; //  Janith
 
         // $password = 'Nisal#2000'; //  nisal
