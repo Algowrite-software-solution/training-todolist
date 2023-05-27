@@ -12,7 +12,7 @@
 
 <body>
     <div>
-        <button onclick="todoRemove();" id="todo_remove" type="button" class="btn btn-secondary">Remove TODO</button>
+        
     </div>
 </body>
 

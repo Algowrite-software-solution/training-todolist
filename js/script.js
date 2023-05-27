@@ -24,6 +24,7 @@ function todoListLoader() {
                 </div>
                 <div>
                     <span class="text-primary">End Date &nbsp; : &nbsp;&nbsp; ${todoItemDueDate}</span>
+                    <button onclick="todoRemove();" id="todo_remove" type="button" class="btn btn-secondary">X</button>
                 </div>
             </div>
         </div>
