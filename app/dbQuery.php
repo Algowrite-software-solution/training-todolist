@@ -14,10 +14,11 @@ class DB
         $user = 'root';
 
         //$password = 'JanithNirmal12#$'; //  Janith
-       // $database = 'todolist-training1'; //  Janith
+        $password = 'Assiment@1234ABC'; //kavindu
+       $database = 'todolist-training1'; //  Janith
 
-        $password = 'Nisal#2000'; //  nisal
-        $database = 'todolist_db'; //  Janith
+        // $password = 'Nisal#2000'; //  nisal
+        // $database = 'todolist_db'; //  Janith
 
 
 

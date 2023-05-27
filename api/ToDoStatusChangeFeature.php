@@ -23,13 +23,14 @@ foreach ($errors as $key => $value) {
 }
 
 $todo_id = $requestObject->todo_id;
+$states_id = $requestObject->status_id;
 
 $database = new DB();
-$updateQuery = "UPDATE `todo` SET `todo_status_id` = '2' WHERE `id` = ?";
-$stmt = $database->prepare($updateQuery, 'i', array($todo_id));
+$updateQuery = "UPDATE `todo` SET `todo_status_id` = ? WHERE `id` = ?";
+$stmt = $database->prepare($updateQuery, 'ii', array($states_id,$todo_id));
 $stmt->execute();  // Execute the prepared statement
 
-$responseObject->states = "success";
+$responseObject->status = "success";
 ErrorSender::sendError($responseObject);
 
 
