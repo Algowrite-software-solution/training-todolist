@@ -29,7 +29,7 @@
                         </div>
                         <!-- Form Section-->
                         <div class="w-100 d-flex justify-content-center align-items-center my-3">
-                            <form class="w-100">
+                            <form class="w-100" id="addForm">
                                 <label class="form-label d-flex " for="title">
                                     <span class="w-25 fw-bold ">Title</span>
                                     <input type="text " class="form-control " id="title">
@@ -42,7 +42,7 @@
                                     <span class="w-25 fw-bold ">Due time</span>
                                     <input type="time" class="form-control " id="due_time">
                                 </label>
-                                <button type="submit" onclick="todoAdd();" class="btn bg-info text-white w-100 ">Add Task</button>
+                                <button type="submit" class="btn bg-info text-white w-100 ">Add Task</button>
                             </form>
                         </div>
                     </div>
